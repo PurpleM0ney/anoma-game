@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="btn red"></div>
         <div class="btn yellow"></div>
         <div class="btn green"></div>
-        <span class="terminal-title">Nexus Composer Loader</span>
+        <span class="terminal-title">Anoma Intent Loader</span>
       </div>
       <div id="soft-terminal-body" class="terminal-text"></div>
     </div>
@@ -27,27 +27,22 @@ document.addEventListener("DOMContentLoaded", () => {
   body.appendChild(loader);
 
   const lines = [
-    "Booting secure enclave...",
-    "Spawning modular instances...",
-    "Calibrating proof generator...",
-    "Hashing verification keys...",
-    "Deploying zk-snark adapter...",
-    "Compiling constraint system...",
-    "Mapping trusted setup...",
-    "Injecting sequencer delays...",
-    "Encrypting state channels...",
-    "Activating L2 bridge...",
-    "Loading WASM circuits...",
-    "Syncing node graph...",
-    "Connecting to NexusNet...",
-    "Initializing tx bundler...",
-    "Querying Merkle root...",
-    "Generating zero-knowledge proof...",
-    "Optimizing modular routing...",
-    "Running SP1 integrity checks...",
-    "Finalizing block commitment...",
-    "Ready for Nexus2048"
-  ];
+  "Waking up Intent Gossip Layer...",
+  "Indexing composable intents...",
+  "Shrimpers NFT registry validated 🦐",
+  "Solver agents connected to meshnet.",
+  "MASP shielded pool checkpointing...",
+  "Instantiating ZK context modules...",
+  "Bootstrapping Validity Layer nodes...",
+  "ComposedTx graph stitched successfully.",
+  "DAG ordering intents by dependency...",
+  "Upward signal received ↗️",
+  "Synchronizing with Anoma DAG...",
+  "Generating zero-knowledge proofs...",
+  "Solver auction in progress...",
+  "Commitment finalized with ZK proofs.",
+  "Anoma Intent Loader ready 🌀"
+];
 
   let index = 0;
   const terminalBody = document.getElementById("soft-terminal-body");
