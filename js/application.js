@@ -1,6 +1,6 @@
 // Wait till the browser is ready to render the game (avoids glitches)
 window.requestAnimationFrame(function () {
-  new GameManager(4, KeyboardInputManager, HTMLActuator, LocalStorageManager);
+  window.ANOMA_GAME = new GameManager(4, KeyboardInputManager, HTMLActuator, LocalStorageManager);
 });
 
 // Tooltip injected immediately (no DOMContentLoaded)
@@ -21,17 +21,17 @@ window.requestAnimationFrame(function () {
   document.body.appendChild(tooltip);
 
   const tooltipMap = {
-    "Input": "Raw data fed into the circuit 🧾",
-    "Preproc.": "Transforms raw input for computation ⚙️",
-    "Circuit": "Describes the logic to be verified 🔄",
-    "Proof": "Compact proof of correct computation 🔐",
-    "Verifier": "Validates the proof without redoing work 🕵️‍♂️",
-    "zkPipe": "Bundles multiple proofs into one pipeline 📦",
-    "zkRollup": "Scales transactions by rolling them up 🚀",
-    "zkEVM": "EVM-compatible zero-knowledge environment ⚡",
-    "Recursive": "Nests proofs inside proofs — recursion! 🔁",
-    "FinalPf.": "Ultimate zk-proof — final checkpoint 🧠",
-    "Nexus!": "You've reached the Nexus! 🧬"
+    "Intent": "User intent in plain words",
+    "Solver": "Finds best route",
+    "Match": "Finds counterparties",
+    "Settle": "Finalizes assets",
+    "Bundle": "Batches actions",
+    "Proof": "Generates ZK proof",
+    "Verify": "Checks the proof",
+    "Anoma": "Cross-domain routing",
+    "Hyper": "Recursive strategy",
+    "Final": "Final checkpoint",
+    "Anoma!": "You made it!"
   };
 
   document.addEventListener("mouseover", function(e) {

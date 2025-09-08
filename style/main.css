@@ -530,8 +530,7 @@ hr {
   text-align: center;
   float: right; }
 
-.game-explanation {
-  margin-top: 50px; }
+
 
 @media screen and (max-width: 520px) {
   html, body {
@@ -561,7 +560,8 @@ hr {
     width: 55%;
     display: block;
     box-sizing: border-box;
-    line-height: 1.65; }
+    line-height: 1.2;
+    margin: 2px 0; }
 
   .restart-button {
     width: 42%;
@@ -760,7 +760,7 @@ hr {
 .tile-inner { word-wrap: break-word; white-space: normal; text-align: center; }
 
 
-/* Special tile gradients for Nexus modules */
+/* Special tile gradients for Anoma modules */
 .tile.tile-16 .tile-inner { background: linear-gradient(135deg, #9be15d, #00e3ae); color: #fff; }
 .tile.tile-32 .tile-inner { background: linear-gradient(135deg, #8e44ad, #c39bd3); color: #fff; }
 .tile.tile-64 .tile-inner { background: linear-gradient(135deg, #ff6f61, #de4463); color: #fff; }
@@ -995,4 +995,203 @@ hr {
 }
 .log-info {
   color: #776e65;
+}
+
+
+/* Intent input panel styled like game board */
+
+
+
+#intent-log {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #f9f6f2;
+  opacity: 0.95;
+}
+
+.intent-box {
+  background: #bbada0;
+  border-radius: 6px;
+  padding: 12px 15px;
+  width: 500px;
+  margin: 15px auto 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+.intent-box #intent-input {
+  width: 100%;
+  max-width: 100%;
+  font-size: 18px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 4px;
+  color: #776e65;
+  background: #eee4da;
+  outline: none;
+  display:block;
+  margin:0 auto;
+}
+.intent-box #intent-log {
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #4CAF50;
+  min-height: 20px; /* reserve space */
+}
+
+
+/* === Intent input panel (styled like game board) === */
+.intent-box{
+  background:#bbada0;
+  border-radius:6px;
+  width:500px;
+  margin:15px auto 0;
+  padding:12px 15px;
+  box-sizing:border-box;
+}
+.intent-box #intent-input{
+  display:block;
+  width:100%;
+  box-sizing:border-box;
+  font-size:18px;
+  padding:10px 12px;
+  border:none;
+  border-radius:4px;
+  color:#776e65;
+  background:#eee4da;
+  outline:none;
+}
+/* Reserve space for log and center the message */
+#intent-log{
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-variant: small-caps;
+  letter-spacing: 0.6px;
+  color:#6aaa64;
+  text-align:center;
+  margin-top:10px;
+  visibility:hidden;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+#intent-log.show{ visibility:visible; }
+#intent-log.success{ color:#6aaa64; } /* success green */
+#intent-log.error{ color:#d33; }      /* in case we add errors later */
+
+.intent-container { margin-bottom: 12px; }
+
+.intent-input-wrapper { margin: 12px 0; }
+
+.game-explanation {
+  margin-top: 6px;       /* reduced gap */
+  font-size: 16px;       /* bigger font */
+  line-height: 1.6;      /* readability */
+  color: #5a5550;        /* softer dark gray */
+  text-align: center;    /* center text */
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.game-explanation strong.important {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 17px;
+  text-transform: uppercase;
+  color: #8f7a66;
+}
+
+body {
+  margin: 10px 0 0 0;   /* reduced top margin */
+  overflow: hidden;     /* remove scrollbar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;        /* full viewport height */
+}
+
+.container {
+  max-height: 95vh;     /* fit into screen */
+  overflow: hidden;
+}
+
+
+/* === Overrides (compact spacing) === */
+.game-intro { line-height: 28px !important; margin: 2px 0 !important; }
+.game-container { margin-top: 8px !important; }
+
+
+/* === Overrides (center game vertically) === */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+.container {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+
+/* === Bigger centered intro text === */
+.game-intro {
+  font-size: 26px !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  line-height: 1.3 !important;
+  margin: 8px auto !important;
+  max-width: 95% !important;
+}
+
+
+/* === Keep New Game button aligned right, text centered === */
+.above-game {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.game-intro {
+  flex: 1 !important;
+  text-align: center !important;
+  font-size: 24px !important;
+  font-weight: bold !important;
+  line-height: 1.3 !important;
+  margin: 0 auto !important;
+}
+
+
+/* === Single-line intro text without wrapping === */
+.game-intro {
+  font-size: 22px !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  line-height: 1.2 !important;
+  margin: 0 auto !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+
+/* === Tighter single-line intro text (fits fully) === */
+.game-intro {
+  font-size: 20px !important;
+  white-space: nowrap !important;
+  text-overflow: clip !important;
+  overflow: visible !important;
+}
+
+
+.made-by {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 6px;
 }

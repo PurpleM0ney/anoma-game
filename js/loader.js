@@ -27,21 +27,21 @@ document.addEventListener("DOMContentLoaded", () => {
   body.appendChild(loader);
 
   const lines = [
-  "Waking up Intent Gossip Layer...",
-  "Indexing composable intents...",
-  "Shrimpers NFT registry validated 🦐",
-  "Solver agents connected to meshnet.",
-  "MASP shielded pool checkpointing...",
-  "Instantiating ZK context modules...",
-  "Bootstrapping Validity Layer nodes...",
-  "ComposedTx graph stitched successfully.",
-  "DAG ordering intents by dependency...",
-  "Upward signal received ↗️",
-  "Synchronizing with Anoma DAG...",
-  "Generating zero-knowledge proofs...",
-  "Solver auction in progress...",
-  "Commitment finalized with ZK proofs.",
-  "Anoma Intent Loader ready 🌀"
+    "Waking up Intent Gossip Layer...",
+    "Indexing composable intents...",
+    "Shrimpers NFT registry validated 🦐",
+    "Solver agents connected to meshnet.",
+    "MASP shielded pool checkpointing...",
+    "Instantiating ZK context modules...",
+    "Bootstrapping Validity Layer nodes...",
+    "ComposedTx graph stitched successfully.",
+    "DAG ordering intents by dependency...",
+    "Upward signal received",
+    "Synchronizing with Anoma DAG...",
+    "Generating zero-knowledge proofs...",
+    "Solver auction in progress...",
+    "Commitment finalized with ZK proofs.",
+    "Anoma Intent Loader ready"
 ];
 
   let index = 0;

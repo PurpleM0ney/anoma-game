@@ -142,3 +142,100 @@ KeyboardInputManager.prototype.bindButtonPress = function (selector, fn) {
   button.addEventListener("click", fn.bind(this));
   button.addEventListener(this.eventTouchend, fn.bind(this));
 };
+
+
+// === Intent input handler (non-invasive): direct emit to GameManager ===
+(function(){
+  document.addEventListener("DOMContentLoaded", function(){
+    var intentEl = document.getElementById("intent-input");
+    if (!intentEl) return;
+    var logEl = document.getElementById("intent-log");
+
+    var successMessages = [
+      "Intent accepted. Solver engaged.",
+      "ComposedTx executed successfully.",
+      "Privacy preserved via MASP.",
+      "Consensus finalized. Upward.",
+      "Shrimpers 🦐 aligned with the DAG."
+    ];
+    var errorMessages = [
+      "Intent rejected: malformed command.",
+      "No route: solver couldn't parse your intent.",
+      "Invalid intent schema. Try: move left/right/up/down.",
+      "Bridge down: command not recognized.",
+      "Gas spent on nothing. Recompose your intent."
+    ];
+
+    var __succIdx = 0, __errIdx = 0;
+    function nextSuccessMsg(){ var m = successMessages[__succIdx % successMessages.length]; __succIdx++; return m; }
+    function nextErrorMsg(){ var m = errorMessages[__errIdx % errorMessages.length]; __errIdx++; return m; }
+
+    function parseDirIndex(text){
+      if (!text) return null;
+      text = text.toLowerCase().trim();
+      // mapping: 0 up, 1 right, 2 down, 3 left
+      if (/[←]|left|shrimp|🦐/.test(text)) return 3;
+      if (/[→]|right/.test(text)) return 1;
+      if (/[↑]|up|pump|moon|to the moon|bull/.test(text)) return 0;
+      if (/[↓]|down|dump|bear|rekt/.test(text)) return 2;
+      // also accept last word
+      var last = text.split(/\s+/).pop();
+      if (last === "left") return 3;
+      if (last === "right") return 1;
+      if (last === "up") return 0;
+      if (last === "down") return 2;
+      return null;
+    }
+
+    // While typing: stop game hotkeys, but allow normal typing
+    document.addEventListener("keydown", function(e){
+  if (document.activeElement === intentEl) {
+    // allow Enter to reach the input handler; block other hotkeys while typing
+    if (e.key !== "Enter") {
+      e.stopImmediatePropagation();
+    }
+  }
+}, true);
+
+
+    intentEl.addEventListener("keydown", function(e){
+      if (e.key === "Enter"){
+        e.preventDefault();
+        var cmd = intentEl.value;
+        intentEl.value = "";
+
+        // Restart keywords
+        if (/\b(new\s*game|restart|reset)\b/i.test(cmd) && window.ANOMA_GAME && window.ANOMA_GAME.inputManager){
+          window.ANOMA_GAME.inputManager.emit("restart");
+          if (logEl){
+            logEl.textContent = "New game started.";
+            logEl.classList.remove("error");
+            logEl.classList.add("success","show");
+          }
+        } else {
+          // Movement intent
+          var dir = parseDirIndex(cmd);
+          if (dir !== null && window.ANOMA_GAME && window.ANOMA_GAME.inputManager){
+            window.ANOMA_GAME.inputManager.emit("move", dir);
+            if (logEl){
+              var idx = Math.floor(Math.random() * successMessages.length);
+              var msg = successMessages[idx];
+              logEl.textContent = msg;
+              logEl.classList.remove("error");
+              logEl.classList.add("success","show");
+            }
+          } else {
+            if (logEl){
+              var em = nextErrorMsg();
+              logEl.textContent = em;
+              logEl.classList.remove("success");
+              logEl.classList.add("error","show");
+            }
+          }
+        }
+        e.stopPropagation();
+      }
+    });
+
+  });
+})();

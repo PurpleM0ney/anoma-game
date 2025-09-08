@@ -1,62 +1,77 @@
 
 const logMap = {
   "Intent": [
-    "Intent expressed by the user.",
-    "Desire captured in the network.",
-    "New intent broadcasted."
+    "Intent captured from user.",
+    "Intent parsed into pipeline.",
+    "Intent ready for execution."
   ],
   "Solver": [
-    "Solver discovered a matching path.",
-    "Solver optimized the transaction flow.",
-    "Solver connected multiple intents."
+    "Solver picked the best route.",
+    "Route candidates scored.",
+    "Best path selected."
   ],
-  "ComposedTx": [
-    "Composed transaction constructed.",
-    "Transaction graph built across intents.",
-    "ComposedTx finalized with multiple parties."
+  "Match": [
+    "Matched counterparties for the trade.",
+    "Orderflow aligned with intent.",
+    "Matching succeeded."
   ],
-  "MASP": [
-    "MASP shielded transfer completed.",
-    "Multi-asset pool updated.",
-    "Privacy preserved within MASP."
+  "Settle": [
+    "Settlement prepared.",
+    "Assets balanced for finalization.",
+    "Settlement checks passed."
   ],
-  "Validity Layer": [
-    "Validity predicate executed.",
-    "Constraints validated successfully.",
-    "Validity ensured across participants."
+  "Bundle": [
+    "Bundled multiple actions.",
+    "Batch created for execution.",
+    "Bundle optimized."
   ],
-  "Anoma DAG": [
-    "DAG synchronized with global state.",
-    "Dependencies ordered in the DAG.",
-    "Anoma DAG confirmed consistency."
-  ],
-  "ZK Proof": [
+  "Proof": [
     "Zero-knowledge proof generated.",
-    "Proof verified successfully.",
-    "Privacy secured by ZK proof."
+    "Proof compressed and ready.",
+    "Proof verified locally."
   ],
-  "Full Anoma": [
-    "Transaction finalized in Anoma.",
-    "Consensus reached.",
-    "Intent successfully fulfilled."
+  "Verify": [
+    "On-chain verification simulated.",
+    "Verifier confirms integrity.",
+    "All constraints satisfied."
+  ],
+  "Anoma": [
+    "Routed across networks.",
+    "Cross-domain link established.",
+    "Anoma handshake complete."
+  ],
+  "Hyper": [
+    "Recursive path expanded.",
+    "Nested intents resolved.",
+    "Hyper-route stitched."
+  ],
+  "Final": [
+    "Final checkpoint achieved.",
+    "All steps sealed.",
+    "Ready to claim result."
+  ],
+  "Anoma!": [
+    "Anoma moment reached!",
+    "Everything just works.",
+    "Welcome to Anoma!"
   ]
 };
 
 
 
   const valueMap = {
-    2: "Input",
-    4: "Preproc.",
-    8: "Circuit",
-    16: "Proof",
-    32: "Verifier",
-    64: "zkPipe",
-    128: "zkRollup",
-    256: "zkEVM",
-    512: "Recursive",
-    1024: "FinalPf.",
-    2048: "Full Anoma!"
-  };
+  2: "Intent",
+  4: "Solver",
+  8: "Match",
+ 16: "Settle",
+ 32: "Bundle",
+ 64: "Proof",
+128: "Verify",
+256: "Anoma",
+512: "Hyper",
+1024: "Final",
+2048: "Anoma!"
+};
 
 function HTMLActuator() {
   this.tileContainer    = document.querySelector(".tile-container");
